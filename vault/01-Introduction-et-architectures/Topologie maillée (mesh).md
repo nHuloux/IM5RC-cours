@@ -15,6 +15,27 @@ tags: [reseaux-de-capteurs, chapitre-1, concept]
 
 C'est la topologie de Zigbee et de Thread, adaptée aux déploiements denses où la portée individuelle est faible mais la couverture globale doit être grande.
 
+## Schéma
+
+```mermaid
+flowchart TB
+    A["A · source"] --- B["B"]
+    A ---|secours| C["C"]
+    B -. lien coupé .- GW((GW))
+    C --- D["D"]
+    D --- GW
+    GW -->|IP / Internet| S[Serveur, base, cloud]
+```
+
+`A`, `B`, `C`, `D` : nœuds capteurs. `GW` : passerelle.
+
+A est hors de portée de la passerelle : ses données
+transitent par des nœuds relais, en **plusieurs sauts** — c'est ce qui étend la
+couverture bien au-delà de la portée d'un seul nœud. Quand le lien B–GW tombe,
+le trafic bascule sur A–C–D–GW : il n'y a **pas de point unique de défaillance**.
+En contrepartie, chaque relais dépense son énergie pour le compte des autres et
+la latence dépend du chemin retenu.
+
 ## Notions liées
 
 - [[Réseau de capteurs sans fil (WSN)]]
