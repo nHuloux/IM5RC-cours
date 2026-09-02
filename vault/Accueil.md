@@ -6,7 +6,7 @@ tags: [reseaux-de-capteurs, moc]
 
 # Réseaux de capteurs [IM5RC] — Graphe de notions
 
-Ce vault reprend le support de cours *Réseaux de capteurs* (MIRA, 3ᵉ année) sous forme de notions reliées entre elles, façon Obsidian : une notion = une page, et chaque page pointe vers les notions qu'elle mobilise ou qui la mobilisent (backlinks calculés par Obsidian, panneau *Liens mentionnés*).
+Ce site reprend le support de cours *Réseaux de capteurs* (MIRA, 3ᵉ année) sous forme de notions reliées entre elles : une notion = une page, et chaque page pointe vers les notions qu'elle mobilise ou qui la mobilisent (liens entrants listés dans le panneau *Liens mentionnés*).
 
 ## Parcourir par chapitre
 
@@ -35,4 +35,4 @@ Ce vault reprend le support de cours *Réseaux de capteurs* (MIRA, 3ᵉ année) 
 - [[Comparaison des technologies radio]] — le tableau de synthèse pour choisir une technologie.
 
 ---
-*Ouvrir ce dossier dans Obsidian pour naviguer dans le graphe (Ctrl/Cmd+G) ou utiliser la page HTML `graphe-notions.html` fournie à côté.*
+*Basculer en **vue graphe** (touche `g`) pour naviguer visuellement entre les notions, ou en **vue liste** (touche `l`) pour les parcourir sous forme de tableau. `⌘K` / `Ctrl+K` ouvre la recherche.*

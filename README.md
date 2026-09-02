@@ -1,8 +1,7 @@
 # Réseaux de capteurs [IM5RC] — graphe de notions
 
-Version web du vault Obsidian du cours *Réseaux de capteurs* (MIRA, 3ᵉ année) :
-57 notions liées entre elles, avec une **vue note**, une **vue graphe** et une
-**vue liste**, dans une interface qui reprend celle d'Obsidian.
+Version web du cours *Réseaux de capteurs* (MIRA, 3ᵉ année) : 57 notions liées
+entre elles, avec une **vue note**, une **vue graphe** et une **vue liste**.
 
 Le site est un **fichier statique unique** (`index.html`, ~190 ko). Aucun
 serveur, aucun build Node, aucune dépendance à installer.
@@ -45,8 +44,8 @@ plus fidèle au comportement de GitHub Pages.)
 
 ## Mettre à jour le contenu
 
-Les notes sont dans `vault/`, exactement dans le format du vault Obsidian.
-Après toute modification :
+Les notes sont dans `vault/`, en markdown, avec un front-matter YAML et des
+liens `[[…]]` entre notions. Après toute modification :
 
 ```bash
 python3 build.py
@@ -63,9 +62,6 @@ $ python3 build.py
   aucun lien mort
   écrit index.html (188 ko)
 ```
-
-Le même dossier `vault/` peut être ouvert directement dans Obsidian
-(*Open folder as vault*) : le site et l'application locale partagent la source.
 
 ---
 
@@ -97,7 +93,7 @@ partageables et l'historique du navigateur fonctionne.
 index.html      le site, généré — c'est le seul fichier servi
 template.html   le gabarit (HTML + CSS + JS) sans les données
 build.py        vault/*.md  →  index.html
-vault/          les 57 notes markdown, format Obsidian
+vault/          les 57 notes markdown (source du contenu)
 .nojekyll       désactive Jekyll sur GitHub Pages
 ```
 
