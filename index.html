@@ -145,6 +145,9 @@ main{display:flex;flex-direction:column;min-width:0;background:var(--bg)}
 .mermaid-box{background:#fff;color:#1f2328;color-scheme:light;border:1px solid var(--border);border-radius:6px;padding:20px 14px;overflow-x:auto;text-align:center}
 :root[data-theme="dark"] .mermaid-box{background:#fff;color:#1f2328}
 .mermaid-box svg{max-width:100%;height:auto;background:transparent}
+/* mermaid conserve le <pre> d'origine autour du SVG : sans cette règle il garde
+   le fond sombre de .md pre et recouvre le blanc de la boîte. */
+.mermaid-box pre.mermaid{background:none;border:0;border-radius:0;padding:0;margin:0;overflow:visible}
 /* mermaid pose ses libellés dans des <span>/<div> HTML : sans cette règle ils
    héritent de la couleur de texte du thème sombre et deviennent illisibles. */
 .mermaid-box .nodeLabel,.mermaid-box .edgeLabel,.mermaid-box .label,
