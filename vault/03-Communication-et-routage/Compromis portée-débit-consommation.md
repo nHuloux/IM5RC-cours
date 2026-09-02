@@ -15,13 +15,13 @@ Augmenter la portée demande d'augmenter la puissance d'émission (donc la conso
 
 ```mermaid
 quadrantChart
-    title Positionnement des technologies radio pour capteurs
+    title Technologies radio pour capteurs
     x-axis "Courte portée (10 m)" --> "Longue portée (10 km)"
     y-axis "Bas débit (kbit/s)" --> "Haut débit (Mbit/s)"
-    quadrant-1 "Longue portée et haut débit : cher en énergie"
-    quadrant-2 "Courte portée et haut débit"
-    quadrant-3 "Courte portée et bas débit"
-    quadrant-4 "LPWAN : le compromis des capteurs"
+    quadrant-1 "Coûteux en énergie"
+    quadrant-2 "Réseaux locaux rapides"
+    quadrant-3 "WPAN basse conso"
+    quadrant-4 "LPWAN : le compromis"
     "BLE": [0.15, 0.72]
     "Wi-Fi (référence)": [0.30, 0.95]
     "802.15.4 / Zigbee / Thread": [0.22, 0.30]

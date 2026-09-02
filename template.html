@@ -140,9 +140,21 @@ main{display:flex;flex-direction:column;min-width:0;background:var(--bg)}
 .md th,.md td{text-align:left;padding:8px 12px;border-bottom:1px solid var(--border);vertical-align:top}
 .md thead th{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);background:var(--surface-2);white-space:nowrap}
 .md tbody tr:last-child td{border-bottom:0}
-.mermaid-box{background:#f4f7f7;border:1px solid var(--border);border-radius:6px;padding:20px 14px;overflow-x:auto;text-align:center}
-:root[data-theme="dark"] .mermaid-box{background:#eef2f2}
-.mermaid-box svg{max-width:100%;height:auto}
+/* Les schémas sont toujours rendus sur fond blanc, en thème clair : le thème du
+   site (ou celui du navigateur) ne doit pas influer sur leur lisibilité. */
+.mermaid-box{background:#fff;color:#1f2328;color-scheme:light;border:1px solid var(--border);border-radius:6px;padding:20px 14px;overflow-x:auto;text-align:center}
+:root[data-theme="dark"] .mermaid-box{background:#fff;color:#1f2328}
+.mermaid-box svg{max-width:100%;height:auto;background:transparent}
+/* mermaid pose ses libellés dans des <span>/<div> HTML : sans cette règle ils
+   héritent de la couleur de texte du thème sombre et deviennent illisibles. */
+.mermaid-box .nodeLabel,.mermaid-box .edgeLabel,.mermaid-box .label,
+.mermaid-box foreignObject div,.mermaid-box foreignObject span,
+.mermaid-box p{color:#1f2328}
+.mermaid-box .edgeLabel,.mermaid-box .edgeLabel span,
+.mermaid-box .edgeLabel div{background-color:#fff}
+.mermaid-box .edgeLabel rect,.mermaid-box rect.labelBkg{fill:#fff}
+/* les numéros d'étape (autonumber) sont blancs et n'ont pas de pastille derrière */
+.mermaid-box text.sequenceNumber{fill:#1f2328!important}
 .note-foot{margin-top:52px;padding-top:18px;border-top:1px solid var(--border);font-size:12px;color:var(--text-faint);display:flex;flex-wrap:wrap;gap:14px}
 
 /* ---- graph view ---- */
