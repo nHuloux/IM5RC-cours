@@ -15,7 +15,7 @@
   --text:#1e2426; --text-muted:#63747a; --text-faint:#93a2a6;
   --accent:#0e7b8c; --accent-hi:#179aaf; --accent-wash:#e4f0f2;
   --shadow:0 1px 2px rgba(20,40,44,.06),0 12px 28px -20px rgba(20,40,44,.35);
-  --c-01:#0f8fa2; --c-02:#3f72c9; --c-03:#8259c4; --c-04:#a9760d; --c-05:#1f8f66; --c-00:#6a7b80;
+  --c-01:#0f8fa2; --c-02:#3f72c9; --c-03:#8259c4; --c-04:#a9760d; --c-05:#1f8f66; --c-06:#c0456b; --c-00:#6a7b80;
   --graph-link:rgba(30,60,66,.20); --graph-label:#33454a;
   color-scheme:light;
 }
@@ -25,7 +25,7 @@
   --text:#dbe3e5; --text-muted:#8e9c9f; --text-faint:#6a787b;
   --accent:#35b8cb; --accent-hi:#5ccede; --accent-wash:#16333a;
   --shadow:0 1px 2px rgba(0,0,0,.35),0 14px 32px -22px rgba(0,0,0,.8);
-  --c-01:#35b8cb; --c-02:#6ea8f5; --c-03:#b18cf0; --c-04:#e8b04b; --c-05:#5cc79a; --c-00:#8d9ba0;
+  --c-01:#35b8cb; --c-02:#6ea8f5; --c-03:#b18cf0; --c-04:#e8b04b; --c-05:#5cc79a; --c-06:#f0819e; --c-00:#8d9ba0;
   --graph-link:rgba(190,215,220,.16); --graph-label:#b9c6c9;
   color-scheme:dark;
 }
@@ -333,14 +333,17 @@ const GROUPS = [
   {key:"03", label:"3 · Communication & routage",      css:"--c-03"},
   {key:"04", label:"4 · Énergie & fiabilité",          css:"--c-04"},
   {key:"05", label:"5 · Compléments hors support",     css:"--c-05"},
+  {key:"06", label:"6 · Activités de transfert",       css:"--c-06"},
   {key:"00", label:"Repères & accueil",                css:"--c-00"},
 ];
+/* repli quand le dossier ne correspond à aucun chapitre connu */
+const GROUP_FALLBACK = GROUPS.find(g => g.key === "00");
 const groupOf = n => {
   const m = /^(\d\d)-/.exec(n.folder || "");
   return m ? m[1] : "00";
 };
 const colorOf = n => getComputedStyle(document.documentElement)
-  .getPropertyValue((GROUPS.find(g => g.key === groupOf(n)) || GROUPS[5]).css).trim();
+  .getPropertyValue((GROUPS.find(g => g.key === groupOf(n)) || GROUP_FALLBACK).css).trim();
 
 /* ---------- graphe : arêtes ---------- */
 NOTES.forEach(n => { n.out = []; n.in = []; n.group = groupOf(n); });
@@ -501,7 +504,7 @@ addEventListener("keydown", e => {
 function renderNote(title, keepScroll){
   const n = BY_TITLE.get(norm(title || "")); if (!n) return;
   const scroll = keepScroll ? $("#vNote").scrollTop : 0;
-  const g = GROUPS.find(x => x.key === n.group) || GROUPS[5];
+  const g = GROUPS.find(x => x.key === n.group) || GROUP_FALLBACK;
   const pills = [
     `<span class="pill chap" style="background:var(${g.css})">${esc(g.label)}</span>`,
     n.type ? `<span class="pill">${esc(n.type)}</span>` : "",
@@ -545,7 +548,7 @@ function renderTree(){
     return `<div class="folder ${open}" data-f="${esc(f)}">
       <div class="frow"><svg class="caret" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg>${esc(label)}<span class="cnt">${list.length}</span></div>
       <div class="fkids">${list.map(n => {
-        const g = GROUPS.find(x => x.key === n.group) || GROUPS[5];
+        const g = GROUPS.find(x => x.key === n.group) || GROUP_FALLBACK;
         return `<button class="leaf ${n.title===state.current?"on":""}" data-t="${esc(n.title)}" title="${esc(n.title)}"><span class="dot" style="background:var(${g.css})"></span>${esc(n.title)}</button>`;
       }).join("")}</div></div>`;
   }).join("") || `<div class="empty">Aucune notion.</div>`;
@@ -626,7 +629,7 @@ function renderList(){
     <div class="tbl"><div class="tblscroll"><table class="data">
       <thead><tr>${th("title","Notion")}${th("folder","Dossier")}${th("type","Type")}${th("degree","Liens","style=text-align:right")}</tr></thead>
       <tbody>${rows.length ? rows.map(n => {
-        const g = GROUPS.find(x => x.key === n.group) || GROUPS[5];
+        const g = GROUPS.find(x => x.key === n.group) || GROUP_FALLBACK;
         return `<tr data-t="${esc(n.title)}">
           <td class="t"><span class="sw" style="background:var(${g.css})"></span>${esc(n.title)}
             <span class="tdesc">${esc(n.excerpt || "")}</span></td>

@@ -18,6 +18,12 @@ Ce site reprend le support de cours *Réseaux de capteurs* (MIRA, 3ᵉ année) s
 
 - [[Glossaire]]
 
+## Mettre les notions au travail
+
+- [[Activités de transfert]] — quatre activités à mener sur un terrain unique :
+  [[Terrain - Domaine viticole]], [[Terrain - Bâtiment intelligent]] ou
+  [[Terrain - Site industriel]].
+
 ## Notions centrales
 
 - [[Réseau de capteurs sans fil (WSN)]]
